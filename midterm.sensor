@@ -1,0 +1,29 @@
+class RoomSensor:
+     """
+     Base sensor class.
+     """
+     def __init__(self, name, temperature, humidity, light: str)  -> None:
+         self.name = name
+         self.temperature = temperature
+         self.humidity = humidity
+         self.light = light
+         
+     def show_info(self):
+        return ( f"Sensor: {self.name}\n"
+                 f"Temperature: {self.temperature}\n
+                 f"Humidity: {self.humidity}\n
+                 f"Light: {self.light}" )
+    
+    def comfort_level(self):
+        if 20 <= self.temperature <= 26 and 40 <= self.humidity <= 60:
+            return "Comfortable"
+        elif self.temperature >= 30 or self.humidity >= 70:
+            return "Warning"
+        else:
+            return "Normal"
+
+    def light_status(self):
+        if self.light < 200:
+            return "Dark"
+        else:
+            return "Bright"
