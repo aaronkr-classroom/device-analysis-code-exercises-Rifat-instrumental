@@ -1,0 +1,35 @@
+from lib.room_sensor import RoomSensor
+
+sensor1 = RoomSensor("Kitchen", 31, 72, 180)
+sensor2 = RoomSensor("Bedroom", 24, 50, 300)
+sensor3 = RoomSensor("Balcony", 27, 35, 500)
+
+
+sensors = [sensor1, sensor2, sensor3]
+
+comfortable = 0
+normal = 0
+warning = 0
+
+for s in sensors:
+    s.show_info()
+
+    comfort = s.comfort_level()
+    light = s.light_status()
+
+    print(f"Comfort Level: {comfort}")
+    print(f"Light Status: {light}")
+    print("-" * 30)
+
+    if comfort == "Comfortable":
+        comfortable += 1
+    elif comfort == "Warning":
+        warning += 1
+    else:
+        normal += 1
+
+print("Final Summary:")
+print(f"Comfortable: {comfortable}")
+print(f"Normal: {normal}")
+print(f"Warning: {warning}")
+
